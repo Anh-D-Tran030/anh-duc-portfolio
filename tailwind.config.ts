@@ -1,0 +1,29 @@
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        bg: '#F2F0EB',
+        surface: '#FFFFFF',
+        surface2: '#ECEAE4',
+        ink: '#1A1814',
+        'ink-muted': '#6B6860',
+        accent: '#2D5BE3',
+        'accent-warm': '#E35B2D',
+        'accent-light': '#EEF2FD',
+        border: '#E0DDD6',
+      },
+      fontFamily: {
+        syne: ['Syne', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+        sans: ['"DM Sans"', 'sans-serif'],
+      },
+      borderRadius: {
+        card: '14px',
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config
