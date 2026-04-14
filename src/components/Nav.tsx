@@ -84,7 +84,7 @@ export default function Nav() {
         {/* Icon Buttons */}
         <div className="flex items-center gap-1">
           <a
-            href="https://github.com/anhduc-tran"
+            href="https://github.com/Anh-D-Tran030"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-9 h-9 rounded-full border border-border text-ink-muted hover:text-ink hover:bg-surface2 transition-all duration-200"

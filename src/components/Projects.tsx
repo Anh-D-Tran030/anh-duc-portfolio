@@ -69,7 +69,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-0">
         {/* Left: content */}
-        <div className="p-8 flex flex-col">
+        <div className="flex flex-col" style={{ padding: '36px 40px', maxWidth: '680px' }}>
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono text-[11px] text-accent-warm bg-orange-50 px-2.5 py-1 rounded-md font-medium">
               Featured
@@ -90,7 +90,7 @@ function FeaturedCard({ project }: { project: Project }) {
             {project.title}
           </h3>
 
-          <p className="font-sans text-ink-muted font-light" style={{ fontSize: '15px', lineHeight: '1.85' }}>
+          <p className="font-sans text-ink-muted font-light" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '65ch' }}>
             {project.description}
           </p>
 
@@ -99,7 +99,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
         {/* Right: metric */}
         {project.metric && (
-          <div className="flex flex-col items-center justify-center p-8 bg-accent-light border-t lg:border-t-0 lg:border-l border-border">
+          <div className="flex flex-col items-center justify-center bg-accent-light border-t lg:border-t-0 lg:border-l border-border" style={{ padding: '36px 40px' }}>
             <span
               className="font-syne font-extrabold text-accent leading-none tracking-[-0.02em]"
               style={{ fontSize: 'clamp(40px, 5vw, 56px)' }}
@@ -122,7 +122,7 @@ function ProjectCard({ project }: { project: Project }) {
       variants={fadeUp}
       whileHover={{ y: -3, transition: { duration: 0.2 } }}
       className="group relative bg-surface rounded-card border border-border overflow-hidden flex flex-col"
-      style={{ padding: '28px 32px' }}
+      style={{ padding: '32px 36px' }}
     >
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -144,7 +144,7 @@ function ProjectCard({ project }: { project: Project }) {
         {project.title}
       </h3>
 
-      <p className="font-sans text-ink-muted font-light flex-1" style={{ fontSize: '15px', lineHeight: '1.85' }}>
+      <p className="font-sans text-ink-muted font-light flex-1" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '55ch' }}>
         {project.description}
       </p>
 
@@ -158,7 +158,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative z-10 pt-[120px] pb-24">
-      <div className="max-w-[1400px] mx-auto px-5 md:px-12">
+      <div className="max-w-[1200px] mx-auto px-12">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -170,7 +170,7 @@ export default function Projects() {
           <motion.div variants={fadeUp}>
             <p className="font-mono text-ink-muted text-[12px] tracking-[0.16em] mb-4">// Projects</p>
             <h2
-              className="font-syne font-extrabold text-ink tracking-[-0.02em] mb-12"
+              className="font-syne font-extrabold text-ink tracking-[-0.02em] mb-12 max-w-[800px]"
               style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
             >
               Production ML Systems
@@ -181,7 +181,7 @@ export default function Projects() {
           <FeaturedCard project={featured} />
 
           {/* 2-col grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12">
             {rest.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

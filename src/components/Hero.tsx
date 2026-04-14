@@ -98,7 +98,7 @@ export default function Hero() {
                 <ArrowRight size={16} />
               </a>
               <a
-                href="https://github.com/anhduc-tran"
+                href="https://github.com/Anh-D-Tran030"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-ink text-ink font-sans font-medium text-base hover:bg-surface2 transition-colors duration-200"

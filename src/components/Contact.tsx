@@ -44,7 +44,7 @@ export default function Contact() {
                   Email Me
                 </a>
                 <a
-                  href="https://github.com/anhduc-tran"
+                  href="https://github.com/Anh-D-Tran030"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 text-white font-sans font-medium text-sm hover:bg-white/10 transition-colors duration-200"
@@ -53,7 +53,9 @@ export default function Contact() {
                   GitHub ↗
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/anh-tran-39b484305/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 text-white font-sans font-medium text-sm hover:bg-white/10 transition-colors duration-200"
                 >
                   <ExternalLink size={15} />

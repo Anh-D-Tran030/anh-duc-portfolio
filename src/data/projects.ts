@@ -10,7 +10,7 @@ export const projects: Project[] = [
     featured: true,
     metric: { value: '<5%', label: 'MAPE across 50 stores' },
     status: 'complete',
-    links: { github: 'https://github.com/anhduc-tran' },
+    links: { github: 'https://github.com/Anh-D-Tran030' },
   },
   {
     id: 'model-monitor',
@@ -19,7 +19,7 @@ export const projects: Project[] = [
       'KS and PSI drift detection on live forecast inputs via Evidently AI. Prometheus alerts fire when PSI exceeds threshold. Full observability stack — API + Prometheus + Grafana — starts with a single docker compose up. No manual service wiring.',
     tags: ['Evidently AI', 'Prometheus', 'Grafana', 'Docker Compose', 'PSI / KS Drift'],
     status: 'complete',
-    links: { github: 'https://github.com/anhduc-tran' },
+    links: { github: 'https://github.com/Anh-D-Tran030' },
   },
   {
     id: 'llm-eval',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
       'pip-installable CLI that scores RAG pipelines on faithfulness, answer relevance, and context precision using DeBERTa NLI + RAGAS. Integrated as a CI quality gate — pipeline blocks image push if any metric drops below configured thresholds.',
     tags: ['RAGAS', 'DeBERTa NLI', 'Sentence Transformers', 'GitHub Actions', 'CLI'],
     status: 'complete',
-    links: { github: 'https://github.com/anhduc-tran' },
+    links: { github: 'https://github.com/Anh-D-Tran030' },
   },
 ]
 
