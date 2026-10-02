@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { BarChart2, Container, Search, Rocket, ArrowRight, ExternalLink, MapPin } from 'lucide-react'
+import { BarChart2, Server, Search, Rocket, ArrowRight, Download, Mail, MapPin } from 'lucide-react'
 import { fadeUp, stagger } from '../utils/animations'
+import { resumes } from '../data/resumes'
 import type { LucideIcon } from '../types'
 
 interface HeroSkillCard {
@@ -11,24 +12,24 @@ interface HeroSkillCard {
 
 const skillCards: HeroSkillCard[] = [
   {
+    icon: Search,
+    title: 'Applied AI',
+    description: 'RAG, hybrid retrieval, text-to-SQL, evaluation',
+  },
+  {
     icon: BarChart2,
     title: 'ML Engineering',
-    description: 'LightGBM, PyTorch, FastAPI serving',
+    description: 'PyTorch, LightGBM, drift monitoring',
   },
   {
-    icon: Container,
-    title: 'MLOps & CI/CD',
-    description: 'Docker, GitHub Actions, GHCR, MLflow',
-  },
-  {
-    icon: Search,
-    title: 'RAG & Evaluation',
-    description: 'Qdrant, RAGAS, DeBERTa NLI, Sentence Transformers',
+    icon: Server,
+    title: 'Backend',
+    description: 'FastAPI, Pydantic v2, SQL, Docker, CI/CD',
   },
   {
     icon: Rocket,
     title: 'CTO @ Vaylo',
-    description: 'AI CRM platform, system architecture, MVP shipped',
+    description: 'Construction SaaS, system architecture, MVP deployed',
   },
 ]
 
@@ -59,7 +60,7 @@ export default function Hero() {
             <motion.h1
               variants={fadeUp}
               className="font-syne font-extrabold text-ink leading-[1.0] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(72px, 8vw, 108px)' }}
+              style={{ fontSize: 'clamp(56px, 8vw, 108px)' }}
             >
               Anh Duc
               <br />
@@ -69,42 +70,48 @@ export default function Hero() {
             {/* Subtitle */}
             <motion.p
               variants={fadeUp}
-              className="font-syne font-semibold text-accent text-[26px]"
+              className="font-syne font-semibold text-accent text-[22px] sm:text-[26px] leading-snug"
             >
-              ML Engineer & Co-founder
+              AI/ML & Backend Engineering
             </motion.p>
 
             {/* Bio */}
             <motion.p
               variants={fadeUp}
-              className="font-sans text-ink-muted leading-[1.75] font-light text-[17px] max-w-[520px]"
+              className="font-sans text-ink-muted leading-[1.75] font-light text-[17px] max-w-[540px]"
             >
-              UTS Bachelor of AI student and Co-Founder & CTO of Vaylo Technologies. I build
-              production ML systems — demand forecasting APIs, RAG pipelines, and full
-              observability stacks — not just academic notebooks.
+              Bachelor of Artificial Intelligence student at UTS (expected June 2027), looking for
+              AI/ML Engineering and Software/Backend Engineering internships. I build applied AI
+              projects end to end: retrieval pipelines, model serving, monitoring and the APIs
+              around them. Co-Founder & CTO of Vaylo Technologies.
             </motion.p>
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mt-1">
               <a
                 href="#projects"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-ink text-surface font-sans font-medium text-base hover:bg-ink/90 transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-ink text-surface font-sans font-medium text-base hover:bg-ink/90 transition-colors duration-200"
               >
                 View Projects
-                <ArrowRight size={16} />
+                <ArrowRight size={16} aria-hidden="true" />
               </a>
+              {resumes.map((resume) => (
+                <a
+                  key={resume.href}
+                  href={resume.href}
+                  download
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-ink text-ink font-sans font-medium text-base hover:bg-surface2 transition-colors duration-200"
+                >
+                  <Download size={16} aria-hidden="true" />
+                  {resume.label} ({resume.format})
+                </a>
+              ))}
               <a
-                href="https://github.com/Anh-D-Tran030"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-ink text-ink font-sans font-medium text-base hover:bg-surface2 transition-colors duration-200"
+                href="#contact"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-ink text-ink font-sans font-medium text-base hover:bg-surface2 transition-colors duration-200"
               >
-                GitHub
-                <ExternalLink size={14} />
+                <Mail size={16} aria-hidden="true" />
+                Contact
               </a>
             </motion.div>
           </motion.div>
@@ -126,7 +133,7 @@ export default function Hero() {
                   className="bg-surface rounded-card border border-border p-7 flex flex-col gap-2"
                 >
                   <div className="w-9 h-9 rounded-lg bg-accent-light flex items-center justify-center">
-                    <Icon size={17} className="text-accent" />
+                    <Icon size={17} className="text-accent" aria-hidden="true" />
                   </div>
                   <p className="font-syne font-bold text-ink text-base leading-tight mt-1">{title}</p>
                   <p className="font-mono text-ink-muted text-[13px] leading-relaxed">{description}</p>
@@ -142,13 +149,13 @@ export default function Hero() {
               <div className="flex items-center gap-2 min-w-0">
                 <span className="relative flex-shrink-0">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
-                  <span className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-60" />
+                  <span className="absolute inset-0 rounded-full bg-emerald-500 motion-safe:animate-ping opacity-60" />
                 </span>
                 <span className="truncate">Open to internships · Nov 2026</span>
               </div>
-              <span className="text-accent font-medium flex-shrink-0">CTO @ Vaylo</span>
+              <span className="text-accent font-medium flex-shrink-0">UTS · AI</span>
               <div className="flex items-center gap-1 flex-shrink-0">
-                <MapPin size={12} />
+                <MapPin size={12} aria-hidden="true" />
                 <span>Sydney, NSW</span>
               </div>
             </motion.div>
@@ -164,7 +171,7 @@ export default function Hero() {
         >
           <span className="relative flex-shrink-0">
             <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
-            <span className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-60" />
+            <span className="absolute inset-0 rounded-full bg-emerald-500 motion-safe:animate-ping opacity-60" />
           </span>
           <span>Open to internships · Nov 2026 · Sydney, NSW</span>
         </motion.div>

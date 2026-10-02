@@ -18,7 +18,7 @@ function ExperienceCard({ exp }: { exp: Experience }) {
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="font-syne font-bold text-ink text-[17px]">{exp.company}</h3>
             {exp.highlight && (
-              <span className="font-mono text-[10px] font-medium text-accent-warm bg-orange-50 px-2 py-0.5 rounded-full">
+              <span className="font-mono text-[10px] font-medium text-orange-800 bg-orange-50 px-2 py-0.5 rounded-full">
                 CTO
               </span>
             )}
@@ -28,17 +28,17 @@ function ExperienceCard({ exp }: { exp: Experience }) {
         <div className="flex flex-col items-start sm:items-end gap-1 text-[12px] font-mono text-ink-muted flex-shrink-0">
           <span>{exp.period}</span>
           <span className="flex items-center gap-1">
-            <MapPin size={10} />
+            <MapPin size={10} aria-hidden="true" />
             {exp.location}
           </span>
         </div>
       </div>
 
       {/* Bullets */}
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-2 list-none p-0 m-0">
         {exp.bullets.map((bullet, i) => (
           <li key={i} className="flex gap-2.5 text-[14px] font-sans text-ink-muted leading-[1.7] font-light">
-            <span className="text-accent mt-[6px] flex-shrink-0 text-[8px]">▶</span>
+            <span className="text-accent mt-[6px] flex-shrink-0 text-[8px]" aria-hidden="true">▶</span>
             {bullet}
           </li>
         ))}

@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -8,16 +9,18 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-bg">
-      <Nav />
-      <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="relative min-h-screen bg-bg">
+        <Nav />
+        <main id="main">
+          <Hero />
+          <Projects />
+          <Skills />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { GitFork, ExternalLink, CheckCircle2 } from 'lucide-react'
+import { GitFork, ExternalLink, CheckCircle2, Clock } from 'lucide-react'
 import { projects, infraTags } from '../data/projects'
 import { fadeUp, stagger } from '../utils/animations'
 import type { Project } from '../types'
@@ -19,17 +19,21 @@ function Tag({ label }: { label: string }) {
   )
 }
 
-function ProjectLinks({ links }: { links: Project['links'] }) {
+function ProjectLinks({ project }: { project: Project }) {
+  const { links, title } = project
+  if (!links.github && !links.demo) return null
+
   return (
-    <div className="flex items-center gap-3 mt-6">
+    <div className="flex items-center gap-4 mt-6">
       {links.github && (
         <a
           href={links.github}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`${title} on GitHub (opens in a new tab)`}
           className="inline-flex items-center gap-1.5 text-[13px] font-sans font-medium text-ink-muted hover:text-ink transition-colors duration-200"
         >
-          <GitFork size={14} />
+          <GitFork size={14} aria-hidden="true" />
           GitHub
         </a>
       )}
@@ -38,9 +42,10 @@ function ProjectLinks({ links }: { links: Project['links'] }) {
           href={links.demo}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`${title} demo (opens in a new tab)`}
           className="inline-flex items-center gap-1.5 text-[13px] font-sans font-medium text-ink-muted hover:text-ink transition-colors duration-200"
         >
-          <ExternalLink size={14} />
+          <ExternalLink size={14} aria-hidden="true" />
           Demo
         </a>
       )}
@@ -49,17 +54,45 @@ function ProjectLinks({ links }: { links: Project['links'] }) {
 }
 
 function StatusBadge({ status }: { status: Project['status'] }) {
+  const done = status.tone === 'done'
+  const Icon = done ? CheckCircle2 : Clock
   return (
-    <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">
-      <CheckCircle2 size={11} />
-      {status === 'complete' ? 'Complete' : 'In Progress'}
+    <span
+      className={`inline-flex items-center gap-1.5 font-mono text-[11px] px-2.5 py-1 rounded-md ${
+        done ? 'text-emerald-800 bg-emerald-50' : 'text-amber-800 bg-amber-50'
+      }`}
+    >
+      <Icon size={11} aria-hidden="true" />
+      {status.label}
     </span>
+  )
+}
+
+function ProjectSections({ sections }: { sections: Project['sections'] }) {
+  if (!sections) return null
+
+  return (
+    <dl className="flex flex-col gap-4 mt-6">
+      {sections.map((section) => (
+        <div key={section.label} className="flex flex-col gap-1">
+          <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">
+            {section.label}
+          </dt>
+          <dd
+            className="font-sans text-ink-muted font-light m-0"
+            style={{ fontSize: '14px', lineHeight: '1.7', maxWidth: '65ch' }}
+          >
+            {section.detail}
+          </dd>
+        </div>
+      ))}
+    </dl>
   )
 }
 
 function FeaturedCard({ project }: { project: Project }) {
   return (
-    <motion.div
+    <motion.article
       variants={fadeUp}
       whileHover={{ y: -3, transition: { duration: 0.2 } }}
       className="group relative bg-surface rounded-card border border-border overflow-hidden"
@@ -69,18 +102,12 @@ function FeaturedCard({ project }: { project: Project }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-0">
         {/* Left: content */}
-        <div className="flex flex-col" style={{ padding: '36px 40px', maxWidth: '680px' }}>
+        <div className="flex flex-col p-6 sm:px-10 sm:py-9 max-w-[720px]">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[11px] text-accent-warm bg-orange-50 px-2.5 py-1 rounded-md font-medium">
+            <span className="font-mono text-[11px] text-orange-800 bg-orange-50 px-2.5 py-1 rounded-md font-medium">
               Featured
             </span>
             <StatusBadge status={project.status} />
-          </div>
-
-          <div className="flex flex-wrap gap-2 mt-3">
-            {project.tags.map((tag) => (
-              <Tag key={tag} label={tag} />
-            ))}
           </div>
 
           <h3
@@ -94,12 +121,20 @@ function FeaturedCard({ project }: { project: Project }) {
             {project.description}
           </p>
 
-          <ProjectLinks links={project.links} />
+          <ProjectSections sections={project.sections} />
+
+          <div className="flex flex-wrap gap-2 mt-6">
+            {project.tags.map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </div>
+
+          <ProjectLinks project={project} />
         </div>
 
         {/* Right: metric */}
         {project.metric && (
-          <div className="flex flex-col items-center justify-center bg-accent-light border-t lg:border-t-0 lg:border-l border-border" style={{ padding: '36px 40px' }}>
+          <div className="flex flex-col items-center justify-center bg-accent-light border-t lg:border-t-0 lg:border-l border-border p-8 sm:p-10">
             <span
               className="font-syne font-extrabold text-accent leading-none tracking-[-0.02em]"
               style={{ fontSize: 'clamp(40px, 5vw, 56px)' }}
@@ -112,29 +147,22 @@ function FeaturedCard({ project }: { project: Project }) {
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   )
 }
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.div
+    <motion.article
       variants={fadeUp}
       whileHover={{ y: -3, transition: { duration: 0.2 } }}
-      className="group relative bg-surface rounded-card border border-border overflow-hidden flex flex-col"
-      style={{ padding: '32px 36px' }}
+      className="group relative bg-surface rounded-card border border-border overflow-hidden flex flex-col p-6 sm:px-9 sm:py-8"
     >
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
       <div className="flex flex-wrap gap-2">
         <StatusBadge status={project.status} />
-      </div>
-
-      <div className="flex flex-wrap gap-2 mt-3">
-        {project.tags.map((tag) => (
-          <Tag key={tag} label={tag} />
-        ))}
       </div>
 
       <h3
@@ -144,12 +172,21 @@ function ProjectCard({ project }: { project: Project }) {
         {project.title}
       </h3>
 
-      <p className="font-sans text-ink-muted font-light flex-1" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '55ch' }}>
+      <p className="font-sans text-ink-muted font-light" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '55ch' }}>
         {project.description}
       </p>
 
-      <ProjectLinks links={project.links} />
-    </motion.div>
+      <ProjectSections sections={project.sections} />
+
+      <div className="flex flex-wrap gap-2 mt-6">
+        {project.tags.map((tag) => (
+          <Tag key={tag} label={tag} />
+        ))}
+      </div>
+
+      <div className="flex-1" />
+      <ProjectLinks project={project} />
+    </motion.article>
   )
 }
 
@@ -158,7 +195,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative z-10 pt-[120px] pb-24">
-      <div className="max-w-[1200px] mx-auto px-12">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -167,21 +204,24 @@ export default function Projects() {
           className="flex flex-col"
         >
           {/* Header */}
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} className="mb-12">
             <p className="font-mono text-ink-muted text-[12px] tracking-[0.16em] mb-4">// Projects</p>
             <h2
-              className="font-syne font-extrabold text-ink tracking-[-0.02em] mb-12 max-w-[800px]"
+              className="font-syne font-extrabold text-ink tracking-[-0.02em] max-w-[800px]"
               style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
             >
-              Production ML Systems
+              Selected Projects
             </h2>
+            <p className="font-sans text-ink-muted font-light text-[16px] leading-[1.7] mt-3 max-w-[640px]">
+              Applied AI first, with the backend and delivery work that makes it run.
+            </p>
           </motion.div>
 
           {/* Featured */}
           <FeaturedCard project={featured} />
 
           {/* 2-col grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
             {rest.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

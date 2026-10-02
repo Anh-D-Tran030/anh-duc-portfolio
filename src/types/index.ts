@@ -13,7 +13,8 @@ export interface Project {
   tags: string[]
   featured?: boolean
   metric?: { value: string; label: string }
-  status: 'complete' | 'in-progress'
+  sections?: { label: string; detail: string }[]
+  status: { label: string; tone: 'done' | 'ongoing' }
   links: { github?: string; demo?: string }
 }
 
@@ -32,6 +33,12 @@ export interface Experience {
   highlight: boolean
   bullets: string[]
   tags: string[]
+}
+
+export interface Resume {
+  label: string
+  href: string
+  format: 'PDF' | 'DOCX'
 }
 
 export type { LucideIcon }
