@@ -32,7 +32,7 @@ export default function Contact() {
               </h2>
 
               <p className="font-sans text-[16px] leading-[1.6] max-w-lg"
-                style={{ color: 'rgba(255,255,255,0.75)' }}>
+                style={{ color: 'rgba(255,255,255,0.86)' }}>
                 Looking for AI/ML Engineering and Software/Backend Engineering internships in
                 Sydney. Email is the fastest way to reach me.
               </p>
@@ -87,7 +87,7 @@ export default function Contact() {
               </div>
 
               {/* Availability note */}
-              <p className="font-mono text-[12px]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+              <p className="font-mono text-[12px]" style={{ color: 'rgba(255,255,255,0.78)' }}>
                 Available from November 2026 · Sydney, NSW
               </p>
             </div>

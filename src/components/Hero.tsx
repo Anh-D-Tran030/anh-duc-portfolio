@@ -78,7 +78,7 @@ export default function Hero() {
             {/* Bio */}
             <motion.p
               variants={fadeUp}
-              className="font-sans text-ink-muted leading-[1.65] text-[17px] max-w-[540px]"
+              className="font-sans font-medium text-ink-muted leading-[1.65] text-[17px] max-w-[540px]"
             >
               AI student at UTS and Co-Founder & CTO of Vaylo Technologies. I build applied AI
               systems end to end—from retrieval and model serving to the APIs and monitoring
@@ -135,7 +135,7 @@ export default function Hero() {
                     <Icon size={17} className="text-accent" aria-hidden="true" />
                   </div>
                   <p className="font-display font-bold text-ink text-base leading-tight mt-1">{title}</p>
-                  <p className="font-sans text-ink-muted text-[14px] leading-[1.45]">{description}</p>
+                  <p className="font-sans font-medium text-ink-muted text-[14px] leading-[1.45]">{description}</p>
                 </motion.div>
               ))}
             </div>

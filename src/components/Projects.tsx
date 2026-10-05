@@ -79,7 +79,7 @@ function ProjectSections({ sections }: { sections: Project['sections'] }) {
             {section.label}
           </dt>
           <dd
-            className="font-sans text-ink-muted m-0"
+            className="font-sans font-medium text-ink-muted m-0"
             style={{ fontSize: '15px', lineHeight: '1.55', maxWidth: '62ch' }}
           >
             {section.detail}
@@ -117,7 +117,7 @@ function FeaturedCard({ project }: { project: Project }) {
             {project.title}
           </h3>
 
-          <p className="font-sans text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '60ch' }}>
+          <p className="font-sans font-medium text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '60ch' }}>
             {project.description}
           </p>
 
@@ -172,7 +172,7 @@ function ProjectCard({ project }: { project: Project }) {
         {project.title}
       </h3>
 
-      <p className="font-sans text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '55ch' }}>
+      <p className="font-sans font-medium text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '55ch' }}>
         {project.description}
       </p>
 
@@ -212,7 +212,7 @@ export default function Projects() {
             >
               Selected Projects
             </h2>
-            <p className="font-sans text-ink-muted text-[17px] leading-[1.55] mt-3 max-w-[640px]">
+            <p className="font-sans font-medium text-ink-muted text-[17px] leading-[1.55] mt-3 max-w-[640px]">
               Applied AI, backed by reliable APIs, evaluation, and delivery.
             </p>
           </motion.div>

@@ -37,7 +37,7 @@ function ExperienceCard({ exp }: { exp: Experience }) {
       {/* Bullets */}
       <ul className="flex flex-col gap-2 list-none p-0 m-0">
         {exp.bullets.map((bullet, i) => (
-          <li key={i} className="flex gap-2.5 text-[15px] font-sans text-ink-muted leading-[1.55]">
+          <li key={i} className="flex gap-2.5 text-[15px] font-sans font-medium text-ink-muted leading-[1.55]">
             <span className="text-accent mt-[6px] flex-shrink-0 text-[8px]" aria-hidden="true">▶</span>
             {bullet}
           </li>
