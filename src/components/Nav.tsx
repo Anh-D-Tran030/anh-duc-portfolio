@@ -70,7 +70,7 @@ export default function Nav() {
             aria-label="Anh Duc Tran, back to top"
             className="flex items-center justify-center w-9 h-9 rounded-full bg-ink mr-2 flex-shrink-0"
           >
-            <span className="font-syne font-bold text-[13px] text-bg tracking-tight" aria-hidden="true">AD</span>
+            <span className="font-display font-bold text-[13px] text-bg tracking-tight" aria-hidden="true">AD</span>
           </a>
 
           {/* Nav Links */}

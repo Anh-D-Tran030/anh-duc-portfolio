@@ -9,9 +9,9 @@ export const experiences: Experience[] = [
     location: 'Sydney, NSW',
     highlight: true,
     bullets: [
-      'Building a construction SaaS platform with three modules: Flow (document transmittals and version control), Core (site operations, RFIs and daily logs) and Quant (cost estimation and budgeting).',
-      'Built a cost anomaly agent that flags line items deviating more than 15% from forecast and writes them to a daily log for human review before any action.',
-      'Deployed the MVP on React, Node.js, Supabase and AI APIs; designed multi-user workspaces with role-based access control.',
+      'Building a construction SaaS platform for document control, site operations, and cost planning.',
+      'Built an agent that flags cost items more than 15% off forecast for human review.',
+      'Deployed the MVP with React, Node.js, and Supabase, including role-based workspaces.',
     ],
     tags: ['React', 'Node.js', 'Supabase', 'AI APIs', 'System Architecture'],
   },

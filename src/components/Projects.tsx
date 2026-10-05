@@ -72,15 +72,15 @@ function ProjectSections({ sections }: { sections: Project['sections'] }) {
   if (!sections) return null
 
   return (
-    <dl className="flex flex-col gap-4 mt-6">
+    <dl className="flex flex-col gap-3 mt-5">
       {sections.map((section) => (
         <div key={section.label} className="flex flex-col gap-1">
           <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">
             {section.label}
           </dt>
           <dd
-            className="font-sans text-ink-muted font-light m-0"
-            style={{ fontSize: '14px', lineHeight: '1.7', maxWidth: '65ch' }}
+            className="font-sans text-ink-muted m-0"
+            style={{ fontSize: '15px', lineHeight: '1.55', maxWidth: '62ch' }}
           >
             {section.detail}
           </dd>
@@ -111,13 +111,13 @@ function FeaturedCard({ project }: { project: Project }) {
           </div>
 
           <h3
-            className="font-syne font-bold text-ink mt-3 mb-[10px]"
-            style={{ fontSize: '22px', letterSpacing: '-0.01em' }}
+            className="font-display font-bold text-ink mt-3 mb-2"
+            style={{ fontSize: '23px', letterSpacing: '-0.02em' }}
           >
             {project.title}
           </h3>
 
-          <p className="font-sans text-ink-muted font-light" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '65ch' }}>
+          <p className="font-sans text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '60ch' }}>
             {project.description}
           </p>
 
@@ -136,7 +136,7 @@ function FeaturedCard({ project }: { project: Project }) {
         {project.metric && (
           <div className="flex flex-col items-center justify-center bg-accent-light border-t lg:border-t-0 lg:border-l border-border p-8 sm:p-10">
             <span
-              className="font-syne font-extrabold text-accent leading-none tracking-[-0.02em]"
+              className="font-display font-extrabold text-accent leading-none tracking-[-0.035em]"
               style={{ fontSize: 'clamp(40px, 5vw, 56px)' }}
             >
               {project.metric.value}
@@ -166,13 +166,13 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <h3
-        className="font-syne font-bold text-ink mt-3"
-        style={{ fontSize: '22px', letterSpacing: '-0.01em', marginBottom: '10px' }}
+        className="font-display font-bold text-ink mt-3"
+        style={{ fontSize: '23px', letterSpacing: '-0.02em', marginBottom: '8px' }}
       >
         {project.title}
       </h3>
 
-      <p className="font-sans text-ink-muted font-light" style={{ fontSize: '15px', lineHeight: '1.8', maxWidth: '55ch' }}>
+      <p className="font-sans text-ink-muted" style={{ fontSize: '16px', lineHeight: '1.55', maxWidth: '55ch' }}>
         {project.description}
       </p>
 
@@ -207,13 +207,13 @@ export default function Projects() {
           <motion.div variants={fadeUp} className="mb-12">
             <p className="font-mono text-ink-muted text-[12px] tracking-[0.16em] mb-4">// Projects</p>
             <h2
-              className="font-syne font-extrabold text-ink tracking-[-0.02em] max-w-[800px]"
-              style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
+              className="font-display font-extrabold text-ink tracking-[-0.03em] max-w-[800px]"
+              style={{ fontSize: 'clamp(36px, 4vw, 48px)' }}
             >
               Selected Projects
             </h2>
-            <p className="font-sans text-ink-muted font-light text-[16px] leading-[1.7] mt-3 max-w-[640px]">
-              Applied AI first, with the backend and delivery work that makes it run.
+            <p className="font-sans text-ink-muted text-[17px] leading-[1.55] mt-3 max-w-[640px]">
+              Applied AI, backed by reliable APIs, evaluation, and delivery.
             </p>
           </motion.div>
 

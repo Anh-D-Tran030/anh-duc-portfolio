@@ -27,11 +27,11 @@ export default function Contact() {
 
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center gap-6">
-              <h2 className="font-syne font-extrabold text-white text-4xl md:text-[40px] tracking-[-0.02em]">
+              <h2 className="font-display font-extrabold text-white text-4xl md:text-[40px] tracking-[-0.03em]">
                 Get in touch
               </h2>
 
-              <p className="font-sans text-[15px] leading-[1.7] font-light max-w-lg"
+              <p className="font-sans text-[16px] leading-[1.6] max-w-lg"
                 style={{ color: 'rgba(255,255,255,0.75)' }}>
                 Looking for AI/ML Engineering and Software/Backend Engineering internships in
                 Sydney. Email is the fastest way to reach me.

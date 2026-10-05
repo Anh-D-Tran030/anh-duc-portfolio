@@ -59,8 +59,8 @@ export default function Hero() {
             {/* H1 */}
             <motion.h1
               variants={fadeUp}
-              className="font-syne font-extrabold text-ink leading-[1.0] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(56px, 8vw, 108px)' }}
+              className="font-display font-extrabold text-ink leading-[0.95] tracking-[-0.035em]"
+              style={{ fontSize: 'clamp(54px, 7.5vw, 100px)' }}
             >
               Anh Duc
               <br />
@@ -70,7 +70,7 @@ export default function Hero() {
             {/* Subtitle */}
             <motion.p
               variants={fadeUp}
-              className="font-syne font-semibold text-accent text-[22px] sm:text-[26px] leading-snug"
+              className="font-display font-semibold text-accent text-[21px] sm:text-[24px] leading-snug tracking-[-0.01em]"
             >
               AI/ML & Backend Engineering
             </motion.p>
@@ -78,12 +78,11 @@ export default function Hero() {
             {/* Bio */}
             <motion.p
               variants={fadeUp}
-              className="font-sans text-ink-muted leading-[1.75] font-light text-[17px] max-w-[540px]"
+              className="font-sans text-ink-muted leading-[1.65] text-[17px] max-w-[540px]"
             >
-              Bachelor of Artificial Intelligence student at UTS (expected June 2027), looking for
-              AI/ML Engineering and Software/Backend Engineering internships. I build applied AI
-              projects end to end: retrieval pipelines, model serving, monitoring and the APIs
-              around them. Co-Founder & CTO of Vaylo Technologies.
+              AI student at UTS and Co-Founder & CTO of Vaylo Technologies. I build applied AI
+              systems end to end—from retrieval and model serving to the APIs and monitoring
+              that keep them reliable.
             </motion.p>
 
             {/* CTAs */}
@@ -135,8 +134,8 @@ export default function Hero() {
                   <div className="w-9 h-9 rounded-lg bg-accent-light flex items-center justify-center">
                     <Icon size={17} className="text-accent" aria-hidden="true" />
                   </div>
-                  <p className="font-syne font-bold text-ink text-base leading-tight mt-1">{title}</p>
-                  <p className="font-mono text-ink-muted text-[13px] leading-relaxed">{description}</p>
+                  <p className="font-display font-bold text-ink text-base leading-tight mt-1">{title}</p>
+                  <p className="font-sans text-ink-muted text-[14px] leading-[1.45]">{description}</p>
                 </motion.div>
               ))}
             </div>

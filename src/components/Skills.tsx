@@ -11,7 +11,7 @@ function SkillGroupCard({ group }: { group: SkillGroup }) {
     >
       <div className="flex items-center gap-3">
         <span className="text-2xl" aria-hidden="true">{group.emoji}</span>
-        <h3 className="font-syne font-bold text-ink text-[15px]">{group.title}</h3>
+        <h3 className="font-display font-bold text-ink text-[16px]">{group.title}</h3>
       </div>
       <div className="flex flex-wrap gap-2">
         {group.chips.map((chip) => (
@@ -42,8 +42,8 @@ export default function Skills() {
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
             <p className="font-mono text-ink-muted text-[12px] tracking-[0.16em]">// Skills</p>
             <h2
-              className="font-syne font-extrabold text-ink tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
+              className="font-display font-extrabold text-ink tracking-[-0.03em]"
+              style={{ fontSize: 'clamp(36px, 4vw, 48px)' }}
             >
               Technical Skills
             </h2>
